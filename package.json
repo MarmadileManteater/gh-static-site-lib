@@ -1,0 +1,19 @@
+{
+  "name": "@marmadilemanteater/gh-static-site-lib",
+  "author": "Emma <MarmadileManteater>",
+  "version": "1.0.0",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@types/node": "^18.11.18",
+    "@xmldom/xmldom": "^0.8.6",
+    "emoji-unicode": "^2.0.1",
+    "highlight.js": "^11.7.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4"
+  },
+  "scripts": {
+    "build": "npx tsc --build --verbose"
+  }
+}
