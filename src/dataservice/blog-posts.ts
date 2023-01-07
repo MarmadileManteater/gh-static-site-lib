@@ -3,8 +3,10 @@ import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js'
-const SITE_URL = 'https://marmadilemanteater.pythonanywhere.com'
 
+const SITE_URL = 'https://marmadilemanteater.github.io'
+
+// Gets all blog posts sorted by the last commit
 export function getAllBlogPostsSorted() : IBlogPost[] {
   const ids = getAllBlogPostIds()
   const posts = ids.map((id) => getBlogPostById(id))
@@ -13,6 +15,7 @@ export function getAllBlogPostsSorted() : IBlogPost[] {
   })
 }
 
+// Get all blog post ids
 export function getAllBlogPostIds() : string[] {
   const { readdirSync } = fs
   return readdirSync('./data/posts')
@@ -20,6 +23,7 @@ export function getAllBlogPostIds() : string[] {
     .map((post) => post.substring(0, post.length - 5))
 }
 
+// Get blog post information from the blog post id
 export function getBlogPostById(postId: string) : IBlogPost {
   const { statSync, readFileSync } = fs
   const { execSync } = child_process
@@ -77,6 +81,7 @@ export function getBlogPostById(postId: string) : IBlogPost {
   } as IBlogPost
 }
 
+// Get an RSS feed of blog posts
 export function getBlogRSSFeed(posts : IBlogPost[]) : string {
   return `<?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">

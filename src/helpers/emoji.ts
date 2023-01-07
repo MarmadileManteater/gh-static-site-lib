@@ -7,11 +7,13 @@ export interface EmojiDirectory {
   twemoji: string[]
 }
 
+// Gets the emojiDirectory from the externals
 export function getEmojiDirectory() : EmojiDirectory {
   // @ts-ignore emojiDirectory needs to be defined in the vite.config.ts
   return emojiDirectory as EmojiDirectory
 }
 
+// Converts an emoji string to a link to an image to replace it with
 export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
   const { mutantstd, twemoji } = getEmojiDirectory()
   let unicode = emojiUnicode(givenEmoji).toLowerCase().replaceAll(' ', '-')
@@ -34,6 +36,7 @@ export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
   return
 }
 
+// Converts an html string containing unicode into a string containing `img` tags which link to images which correspond with the emoji
 export function convertEmojiToImages(html : string) : string {
   interface EmojiMatch {
     unicode: string,
