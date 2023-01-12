@@ -82,20 +82,20 @@ export function getBlogPostById(postId: string) : IBlogPost {
 }
 
 // Get an RSS feed of blog posts
-export function getBlogRSSFeed(posts : IBlogPost[]) : string {
+export function getBlogRSSFeed(posts : IBlogPost[], site_url: string = `${SITE_URL}/blog/`) : string {
   return `<?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
       <title>Emma&apos;s Blog!</title>
       <description>my blog; 🤷‍♀️i guess</description>
-      <link>${SITE_URL}/blog/</link>
+      <link>${site_url}</link>
       <language>en-us</language>
   ${posts.map((post) => {
     const date = new Date(post.gittime)
     return `<item>
     <title>${post.title.replace(/&/g, '&amp;')}</title>
-    <link>${SITE_URL}/blog/${post.id}</link>
-    <guid>${SITE_URL}/blog/${post.id}</guid>
+    <link>${site_url}${post.id}</link>
+    <guid>${site_url}${post.id}</guid>
     <description>${post.shortDescription.replace(/&/g, '&amp;').replace(/'/g, '&apos;')}</description>
     <pubDate>${date.toUTCString()}</pubDate>
     <content:encoded><![CDATA[${post.html}]]></content:encoded>
