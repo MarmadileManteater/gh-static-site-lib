@@ -17,13 +17,19 @@ export function getEmojiDirectory() : EmojiDirectory {
 export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
   const { mutantstd, twemoji } = getEmojiDirectory()
   let unicode = emojiUnicode(givenEmoji).toLowerCase().replaceAll(' ', '-')
+
   switch (unicode) {
   // special cases:
   case '1f937-200d-2640':// what this actually means is:
   case '1f926-200d-2640':
   case '1f470-200d-2640':
+  case '1f4ec':
+  case '26a1':
+  case '1f4fa':
     unicode = `${unicode}-fe0f`
     break
+  case '2665':
+    unicode = '2663-fe0f'
   default:
     break
   }
