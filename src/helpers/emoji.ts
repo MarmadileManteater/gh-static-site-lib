@@ -26,6 +26,7 @@ export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
   case '1f4ec':
   case '26a1':
   case '1f4fa':
+  case '1f4f7':
     unicode = `${unicode}-fe0f`
     break
   case '2665':
