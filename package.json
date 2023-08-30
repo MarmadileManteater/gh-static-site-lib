@@ -6,12 +6,13 @@
     "dist/"
   ],
   "dependencies": {
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.5.6",
     "@xmldom/xmldom": "^0.8.6",
     "emoji-unicode": "^2.0.1",
     "highlight.js": "^11.7.0",
     "typescript": "^4.9.4",
-    "vite": "^4.0.4"
+    "vite": "^4.0.4",
+    "xml2js": "^0.6.2"
   },
   "scripts": {
     "build": "npx tsc --build --verbose"
