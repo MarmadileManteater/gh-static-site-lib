@@ -28,6 +28,7 @@ export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
   case '1f4f7':
   case '1f9df-200d-2640':
   case '1f9db-200d-2640':
+  case '1f9d9-200d-2640':
     unicode = `${unicode}-fe0f`
     break
   case '2665':
@@ -35,6 +36,12 @@ export function emojiToOtherMoji(givenEmoji : string) : string|undefined {
     break
   case '1f575':
     unicode = '1f575-1f3fb-200d-2640-fe0f'
+    break
+  case '1f441-fe0f-200d-1f5e8-fe0f':
+    unicode = '1f441-200d-1f5e8'
+    break
+  case '1f44b':
+    unicode = `${unicode}-101623`
     break
   default:
     break
@@ -55,8 +62,8 @@ export function convertEmojiToImages(html : string) : string {
     emoji: string
   }
   // Convert to a set and back
-  // 🤔 I can't figure out how to generalize matching the trans flag
-  const emojiMatches = Array.from(html.matchAll(/🏳️‍⚧️|(\p{Emoji}(\u200d\p{Emoji})*)/gu))
+  // 🤔 I can't figure out how to generalize matching certain edge cases
+  const emojiMatches = Array.from(html.matchAll(/👁️‍🗨️|🕵️‍♀️|🏳️‍⚧️|(\p{Emoji}(\u200d\p{Emoji})*)/gu))
   const listOfEmojiFound = emojiMatches.map((match) => {
     const unicode = emojiUnicode(match[0]).toLowerCase().replaceAll(' ', '-')
     return {
