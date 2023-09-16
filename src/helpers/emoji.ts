@@ -9,7 +9,7 @@ export interface EmojiDirectory {
 
 // Gets the emojiDirectory from the externals
 export function getEmojiDirectory() : EmojiDirectory {
-  // @ts-ignore emojiDirectory needs to be defined in the vite.config.ts
+  // @ts-expect-error emojiDirectory needs to be defined in the vite.config.ts
   return emojiDirectory as EmojiDirectory
 }
 
