@@ -1,4 +1,4 @@
-import { IBlogPost } from '../models/blog'
+import type { IBlogPost } from '../models/blog'
 import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'

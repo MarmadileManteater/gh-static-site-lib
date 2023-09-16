@@ -1,4 +1,4 @@
-import { IMedia, IMediaContent, IRSS, ISocialPost } from '../models/social-posts'
+import type { IMedia, IMediaContent, IRSS, ISocialPost } from '../models/social-posts'
 import { parseString } from 'xml2js'
 import { promisify } from 'util'
 import fsp from 'fs/promises'
