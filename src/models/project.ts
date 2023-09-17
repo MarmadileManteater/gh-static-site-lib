@@ -7,13 +7,15 @@ export interface IProjectButtonData {
 }
   
 export interface IProject {
-  type: 'IProject',
+  type: 'IProject'
   title: string
+  ghFullName: string
   tags: Array<string>
   summary: string
   buttons: Array<IProjectButtonData>
   thumbnail: string
   lastUpdate: string
+  ghStars: number
 }
 
 export interface ITag {
