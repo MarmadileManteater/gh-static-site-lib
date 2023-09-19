@@ -98,7 +98,7 @@ export function getBlogRSSFeed(posts : IBlogPost[], site_url: string = `${SITE_U
     <guid>${site_url}${post.id}</guid>
     <description>${post.shortDescription.replace(/&/g, '&amp;').replace(/'/g, '&apos;')}</description>
     <pubDate>${date.toUTCString()}</pubDate>
-    <content:encoded><![CDATA[${post.html}]]></content:encoded>
+    <content:encoded><![CDATA[${post.html.replaceAll('src="./', `src="${site_url}${post.id}/`)}]]></content:encoded>
   </item>`
   }).join('\n')}
     </channel>
