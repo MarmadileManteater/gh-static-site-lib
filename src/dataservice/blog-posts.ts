@@ -34,7 +34,7 @@ export function getBlogPostById(postId: string) : IBlogPost {
   let gitDate
   try {
     // 👩‍💻Retrieve the last modification date known by git
-    const gitDateResult = execSync(`cd ./data/ && git log -1 -p ./posts/${postId}.html`)
+    const gitDateResult = execSync(`cd ./data/ && git log -1 -p "./posts/${postId}.html"`)
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
   } catch (err) {
     console.warn(`no git date found for ${postId}; falling back to using file date; this happens when a file does not have any history with git`)
@@ -65,6 +65,16 @@ export function getBlogPostById(postId: string) : IBlogPost {
       element.parentNode.insertBefore(newElement, element)
       element.parentNode.removeChild(element)
     }
+  })
+  const images = postMarkup.getElementsByTagName("img")
+  Array.from(images).forEach((image) => {
+    let src
+    if ((src = image.getAttribute('src')) !== null) {
+      if (src.startsWith("./")) {
+        image.setAttribute('src', src.replace("./", `/blog/${postId}/`))
+      }
+    }
+      
   })
   const html = new XMLSerializer().serializeToString(postMarkup)
   return {
